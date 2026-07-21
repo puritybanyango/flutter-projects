@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -20,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.all(24),
+          padding: EdgeInsets.all(26),
           child: Form(
             key: _loginFormKey,
             child: Column(
@@ -99,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
 
                   child: Text("Login",
-                  style:TextStyle(color: Colors.white)),
+                  style:TextStyle(color: const Color.fromARGB(255, 253, 252, 252))),
 
                 
                
@@ -111,9 +112,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Text("Not yet Registered"),
 
-                    TextButton(onPressed: (){}, child: Text("Sign Up"))
+                    TextButton(
+                      onPressed: (){
+                        Navigator.push(context,MaterialPageRoute(builder: (context) => SignupScreen()));
+                      }, 
+                      child: const Text("Sign Up"))
                   ],
-
                 )
               ],
             ),
@@ -122,4 +126,13 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+  
+  @override
+  void dispose(){
+  _emailController.dispose();
+  _passwordController.dispose();
+  super.dispose();
 }
+
+}
+
