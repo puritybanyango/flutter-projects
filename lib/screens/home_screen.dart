@@ -33,7 +33,27 @@ class _HomeScreenState extends State<HomeScreen>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar:AppBar(title: Text(_tabTitle)),
+      appBar:AppBar(
+        title: Column(
+          children: [
+        Text(_tabTitle),
+        Row(
+          children: [
+            Spacer(flex: 1),
+             Consumer<CartModel>(
+          builder: (context, cart, child) {
+            return Text('KES ${cart.getTotalCost()}',
+            style: TextStyle(fontSize: 12),
+            );
+          },
+             ),
+          
+          ],)
+       
+          
+      
+
+      ])),
       body:IndexedStack(index: _selectedIndex,children:_tabs),
       bottomNavigationBar: BottomNavigationBar(
         type:BottomNavigationBarType.fixed,

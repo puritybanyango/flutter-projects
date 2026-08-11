@@ -9,6 +9,12 @@ class CartModel extends ChangeNotifier {
 
   UnmodifiableListView<CartItem> get items => UnmodifiableListView(_items);
 
+  double getTotalCost(){
+    var total = 0.0;
+    _items.forEach((item) => total += item.itemTotal); 
+    return total;
+  }
+
   CartItem? findItem(Product product){
     for(var item in _items){
       if(item.product.name == product.name){
